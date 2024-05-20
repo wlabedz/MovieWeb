@@ -1,0 +1,73 @@
+@model HomeViewModel
+
+<div class="card mb-4">
+    <div class="card-body">
+        <h2>@Model.Films[0].Title</h2>
+        <p><strong>Director:</strong> @Model.Films[0].Director.Name @Model.Films[0].Director.Surname </p>
+        <p><strong>Genre:</strong> @Model.Films[0].Genre.Name</p>
+
+        <h3>Actors</h3>
+        @if (Model.FilmActors != null && Model.FilmActors.Any())
+        {
+            @foreach (var filmaktor in Model.FilmActors)
+            {
+            <ul>
+                @if (filmaktor.FilmId== Model.Films[0].Id)
+                {
+                    <li>@filmaktor.Actor.Name @filmaktor.Actor.Surname</li>
+                }
+            </ul>
+            }
+        }
+        else
+        {
+            <p>No actors listed.</p>
+        }
+
+        <h3>Reviews</h3>
+        @if (Model.Reviews != null && Model.Reviews.Any())
+        {
+            <ul class="list-group">
+                @{
+                    int sum = 0;
+                    foreach (var review in Model.Reviews)
+                    {
+                        sum += review.Rating;
+                    }
+                    double averageRating = (double)sum / Model.Reviews.Count;
+                }
+                <li class="list-group-item">Average Rating: @averageRating.ToString("0.00") (Total Reviews: @Model.Reviews.Count)</li>
+                @foreach (var review in Model.Reviews)
+                {
+                    <li class="list-group-item">
+                        <strong>@review.username</strong> rated @review.Rating: @review.Text
+                    </li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p>No reviews yet.</p>
+        }
+
+        <h3>Add Review</h3>
+        <form method="post" action="/api/IO/review">
+            <input type="hidden" name="FilmId" value="@Model.Films[0].Id" />
+            <div class="form-group">
+                <label for="rating">Rating:</label>
+                <select class="form-control" id="rating" name="Rating">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="text">Opinion:</label>
+                <textarea class="form-control" id="text" name="Text"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Review</button>
+        </form>
+    </div>
+</div>

@@ -60,7 +60,11 @@
                                 @foreach (var film in Model.Films)
                                 {
                                     <tr>
-                                        <td>@film.Title</td>
+                                        <td>
+                                            <a href="@Url.Action("FilmDetails", "IO", new { id = film.Id })">
+                                                @film.Title
+                                            </a>
+                                        </td>
                                         <td>@film.Director.Name @film.Director.Surname</td>
                                         <td>@film.Genre.Name</td>
                                        <td>

@@ -259,5 +259,41 @@ public IActionResult AddReview(string filmId, string rating, string text)
     {
         return View();
     }
+    
+    [HttpGet("api/IO/film/{id}")]
+    public IActionResult FilmDetails(int id)
+    {
+        if (HttpContext.Session.GetString("Logged") != "Yes")
+        {
+            return RedirectToAction("Welcome");
+        }
+
+        var film = _context.Films
+            .FirstOrDefault(f => f.Id == id);
+
+        if (film == null)
+        {
+            return NotFound();
+        }
+
+        var reviews = _context.Reviews.Where(r => r.FilmId == id).ToList();
+        var filmactors = _context.FilmActors.ToList();
+        var films = new List<Film>();
+        var genres = _context.Genres.ToList();
+        var directors = _context.Directors.ToList();
+        films.Add(film);
+        var actors = _context.Actors.ToList();
+        var viewModel = new HomeViewModel
+        {
+            Actors = actors,   
+            Films = films,
+            Reviews = reviews,
+            FilmActors = filmactors,
+            Directors = directors,
+            Genres = genres
+        };
+
+        return View(viewModel);
+    }
 
 }
