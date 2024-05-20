@@ -1,0 +1,31 @@
+@model HomeViewModel
+
+@if (Model.Genres.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var genre in Model.Genres)
+            {
+                <tr>
+                    <td>@genre.Name</td>
+                    <td>
+                        <form asp-controller="IO" asp-action="DelGen" method="post" style="display: inline;">
+                        <input type="hidden" name="id" value="@genre.Id" />
+                        <button type="submit" class="btn btn-primary mr-2">Delete Genre</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No genres found.</p>
+}

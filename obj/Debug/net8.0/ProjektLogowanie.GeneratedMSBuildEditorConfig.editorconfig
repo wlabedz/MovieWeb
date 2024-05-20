@@ -42,6 +42,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSU9cQWRkQWN0b3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Wojtek/Desktop/iisi/2023_2024/pz2/lab10/ProjektLogowanie/Views/IO/AddDirector.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSU9cQWRkRGlyZWN0b3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Wojtek/Desktop/iisi/2023_2024/pz2/lab10/ProjektLogowanie/Views/IO/AddFilm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSU9cQWRkRmlsbS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Wojtek/Desktop/iisi/2023_2024/pz2/lab10/ProjektLogowanie/Views/IO/AddGenre.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSU9cQWRkR2VucmUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Wojtek/Desktop/iisi/2023_2024/pz2/lab10/ProjektLogowanie/Views/IO/AddRev.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSU9cQWRkUmV2LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -62,12 +74,44 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSU9cQXNzaWduU3VjYy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Wojtek/Desktop/iisi/2023_2024/pz2/lab10/ProjektLogowanie/Views/IO/DelDirectorFailed.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSU9cRGVsRGlyZWN0b3JGYWlsZWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Wojtek/Desktop/iisi/2023_2024/pz2/lab10/ProjektLogowanie/Views/IO/DelDirSucc.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSU9cRGVsRGlyU3VjYy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Wojtek/Desktop/iisi/2023_2024/pz2/lab10/ProjektLogowanie/Views/IO/DeleteActor.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSU9cRGVsZXRlQWN0b3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Wojtek/Desktop/iisi/2023_2024/pz2/lab10/ProjektLogowanie/Views/IO/DeleteDirector.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSU9cRGVsZXRlRGlyZWN0b3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Wojtek/Desktop/iisi/2023_2024/pz2/lab10/ProjektLogowanie/Views/IO/DeleteFilm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSU9cRGVsZXRlRmlsbS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Wojtek/Desktop/iisi/2023_2024/pz2/lab10/ProjektLogowanie/Views/IO/DelFailed.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSU9cRGVsRmFpbGVkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Wojtek/Desktop/iisi/2023_2024/pz2/lab10/ProjektLogowanie/Views/IO/DelFilmFailed.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSU9cRGVsRmlsbUZhaWxlZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Wojtek/Desktop/iisi/2023_2024/pz2/lab10/ProjektLogowanie/Views/IO/DelFilmSucc.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSU9cRGVsRmlsbVN1Y2MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Wojtek/Desktop/iisi/2023_2024/pz2/lab10/ProjektLogowanie/Views/IO/DelGenre.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSU9cRGVsR2VucmUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Wojtek/Desktop/iisi/2023_2024/pz2/lab10/ProjektLogowanie/Views/IO/DelRev.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSU9cRGVsUmV2LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Wojtek/Desktop/iisi/2023_2024/pz2/lab10/ProjektLogowanie/Views/IO/DelSucc.cshtml]
@@ -78,12 +122,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSU9cRGlyZWN0b3JzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Wojtek/Desktop/iisi/2023_2024/pz2/lab10/ProjektLogowanie/Views/IO/DirectorsFailed.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSU9cRGlyZWN0b3JzRmFpbGVkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Wojtek/Desktop/iisi/2023_2024/pz2/lab10/ProjektLogowanie/Views/IO/DirectorsSuccess.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSU9cRGlyZWN0b3JzU3VjY2Vzcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Wojtek/Desktop/iisi/2023_2024/pz2/lab10/ProjektLogowanie/Views/IO/FilmDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSU9cRmlsbURldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Wojtek/Desktop/iisi/2023_2024/pz2/lab10/ProjektLogowanie/Views/IO/Films.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSU9cRmlsbXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Wojtek/Desktop/iisi/2023_2024/pz2/lab10/ProjektLogowanie/Views/IO/FilmsFailed.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSU9cRmlsbXNGYWlsZWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Wojtek/Desktop/iisi/2023_2024/pz2/lab10/ProjektLogowanie/Views/IO/FilmsSuccess.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSU9cRmlsbXNTdWNjZXNzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Wojtek/Desktop/iisi/2023_2024/pz2/lab10/ProjektLogowanie/Views/IO/Genres.cshtml]

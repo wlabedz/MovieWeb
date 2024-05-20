@@ -1,0 +1,18 @@
+@model HomeViewModel
+
+<div class="card mb-4">
+    <div class="card-body">
+        <h3>Add Director</h3>
+        <form method="post" action="/api/IO/adddi">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="name" id="name" name="name" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="surname">Surname:</label>
+                <input type="surname" id="surname" name="surname" class="form-control" />
+            </div>
+            <button type="submit" class="btn btn-primary">Add Director</button>
+        </form>
+    </div>
+</div>

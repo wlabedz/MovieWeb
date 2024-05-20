@@ -1,0 +1,33 @@
+@model HomeViewModel
+
+@if (Model.Directors.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var director in Model.Directors)
+            {
+                <tr>
+                    <td>@director.Name</td>
+                    <td>@director.Surname</td>
+                    <td>
+                        <form asp-controller="IO" asp-action="DeleteDi" method="post" style="display: inline;">
+                        <input type="hidden" name="id" value="@director.Id" />
+                        <button type="submit" class="btn btn-primary mr-2">Delete Director</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No directors found.</p>
+}

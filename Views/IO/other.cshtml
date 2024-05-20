@@ -114,6 +114,16 @@
                         </table>
                     </div>
                 </div>
+                <div class="card mb-4">
+            <div class="card-body">
+                <form asp-controller="IO" asp-action="AddFilm" method="get" style="display: inline;">
+                    <button type="submit" class="btn btn-primary mr-2">Add Film</button>
+                </form>
+                <form asp-controller="IO" asp-action="DeleteFilm" method="get" style="display: inline;">
+                    <button type="submit" class="btn btn-danger mr-2">Delete Film</button>
+                </form>
+            </div>
+            </div>
             }
 
             @if (Model.Directors != null && Model.Directors.Any())
@@ -152,36 +162,14 @@
                         </table>
                     </div>
                 </div>
-            }
-
-            @if (Model.Reviews != null && Model.Reviews.Any())
-            {
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <h3>Reviews</h3>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>User</th>
-                                    <th>Text</th>
-                                    <th>Rating</th>
-                                    <th>Film</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var review in Model.Reviews)
-                                {
-                                    <tr>
-                                        <td>@review.username</td>
-                                        <td>@review.Text</td>
-                                        <td>@review.Rating</td>
-                                        <td>@review.Film.Title</td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                 <div class="card-body">
+                <form asp-controller="IO" asp-action="AddDirector" method="get" style="display: inline;">
+                    <button type="submit" class="btn btn-primary mr-2">Add Director</button>
+                </form>
+                <form asp-controller="IO" asp-action="DeleteDirector" method="get" style="display: inline;">
+                    <button type="submit" class="btn btn-danger mr-2">Delete Director</button>
+                </form>
+            </div>
             }
             @if (Model.Genres != null && Model.Genres.Any())
             {
@@ -216,13 +204,55 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="card mb-4">
+                <div class="card-body">
+                    <form asp-controller="IO" asp-action="AddGenre" method="get" style="display: inline;">
+                    <button type="submit" class="btn btn-primary mr-2">Add Genre</button>
+                    </form>
+                    <form asp-controller="IO" asp-action="DelGenre" method="get" style="display: inline;">
+                        <button type="submit" class="btn btn-danger mr-2">Delete Genre</button>
+                    </form>
+                </div>
+            </div>
+                </div>
+            }
+            @if (Model.Reviews != null && Model.Reviews.Any())
+            {
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3>Reviews</h3>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Text</th>
+                                    <th>Rating</th>
+                                    <th>Film</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var review in Model.Reviews)
+                                {
+                                    <tr>
+                                        <td>@review.username</td>
+                                        <td>@review.Text</td>
+                                        <td>@review.Rating</td>
+                                        <td>@review.Film.Title</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    
                 </div>
             }
             <div class="card mb-4">
                 <div class="card-body">
-                    <h3>Add Review</h3>
-                    <form asp-controller="IO" asp-action="AddRev" method="get" style="margin-left: 5px;">
-                        <button type="submit" class="btn btn-primary">Add Review</button>
+                    <form asp-controller="IO" asp-action="AddRev" method="get" style="display: inline;">
+                    <button type="submit" class="btn btn-primary mr-2">Add Review</button>
+                    </form>
+                    <form asp-controller="IO" asp-action="DelRev" method="get" style="display: inline;">
+                        <button type="submit" class="btn btn-danger mr-2">Delete Review</button>
                     </form>
                 </div>
             </div>

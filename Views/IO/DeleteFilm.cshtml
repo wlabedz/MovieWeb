@@ -1,0 +1,31 @@
+@model HomeViewModel
+
+@if (Model.Films.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var film in Model.Films)
+            {
+                <tr>
+                    <td>@film.Title</td>
+                    <td>
+                        <form asp-controller="IO" asp-action="DeleteFi" method="post" style="display: inline;">
+                        <input type="hidden" name="id" value="@film.Id" />
+                        <button type="submit" class="btn btn-primary mr-2">Delete Film</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No films found.</p>
+}

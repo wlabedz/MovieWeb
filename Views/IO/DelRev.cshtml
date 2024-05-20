@@ -1,0 +1,35 @@
+@model HomeViewModel
+
+@if (Model.Reviews.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Film</th>
+                <th>Text</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var review in Model.Reviews)
+            {
+                <tr>
+                    <td>@review.username</td>
+                    <td>@review.Film.Title</td>
+                    <td>@review.Text</td>
+                    <td>
+                        <form asp-controller="IO" asp-action="DelRe" method="post" style="display: inline;">
+                        <input type="hidden" name="id" value="@review.Id" />
+                        <button type="submit" class="btn btn-primary mr-2">Delete Review</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No reviews found.</p>
+}
