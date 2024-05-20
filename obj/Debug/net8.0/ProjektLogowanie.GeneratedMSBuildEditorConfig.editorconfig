@@ -1,0 +1,83 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = ProjektLogowanie
+build_property.RootNamespace = ProjektLogowanie
+build_property.ProjectDir = C:\Users\Wojtek\Desktop\iisi\2023_2024\pz2\lab10\ProjektLogowanie\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Wojtek\Desktop\iisi\2023_2024\pz2\lab10\ProjektLogowanie
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/Wojtek/Desktop/iisi/2023_2024/pz2/lab10/ProjektLogowanie/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Wojtek/Desktop/iisi/2023_2024/pz2/lab10/ProjektLogowanie/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Wojtek/Desktop/iisi/2023_2024/pz2/lab10/ProjektLogowanie/Views/IO/AddRev.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSU9cQWRkUmV2LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Wojtek/Desktop/iisi/2023_2024/pz2/lab10/ProjektLogowanie/Views/IO/adm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSU9cYWRtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Wojtek/Desktop/iisi/2023_2024/pz2/lab10/ProjektLogowanie/Views/IO/Logged.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSU9cTG9nZ2VkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Wojtek/Desktop/iisi/2023_2024/pz2/lab10/ProjektLogowanie/Views/IO/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSU9cTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Wojtek/Desktop/iisi/2023_2024/pz2/lab10/ProjektLogowanie/Views/IO/LogOut.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSU9cTG9nT3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Wojtek/Desktop/iisi/2023_2024/pz2/lab10/ProjektLogowanie/Views/IO/other.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSU9cb3RoZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Wojtek/Desktop/iisi/2023_2024/pz2/lab10/ProjektLogowanie/Views/IO/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSU9cUmVnaXN0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Wojtek/Desktop/iisi/2023_2024/pz2/lab10/ProjektLogowanie/Views/IO/ReviewAdded.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSU9cUmV2aWV3QWRkZWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Wojtek/Desktop/iisi/2023_2024/pz2/lab10/ProjektLogowanie/Views/IO/Welcome.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSU9cV2VsY29tZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Wojtek/Desktop/iisi/2023_2024/pz2/lab10/ProjektLogowanie/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Wojtek/Desktop/iisi/2023_2024/pz2/lab10/ProjektLogowanie/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Wojtek/Desktop/iisi/2023_2024/pz2/lab10/ProjektLogowanie/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Wojtek/Desktop/iisi/2023_2024/pz2/lab10/ProjektLogowanie/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Wojtek/Desktop/iisi/2023_2024/pz2/lab10/ProjektLogowanie/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-3t541t905a

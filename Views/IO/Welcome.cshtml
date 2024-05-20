@@ -1,0 +1,33 @@
+<div class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">Welcome</div>
+                <div class="card-body">
+                    @{
+                        if (ViewContext.HttpContext.Session.GetString("Logged") == "Yes")
+                        {
+                            string k = ViewContext.HttpContext.Session.GetString("User");
+                            <p>You are logged in as: @k</p>
+                            <div class="d-flex">
+                                <form asp-controller="IO" asp-action="LogOut" method="get" class="mr-3">
+                                    <button type="submit" class="btn btn-primary">Log out</button>
+                                </form>
+                                <form asp-controller="IO" asp-action="other" method="get" style="margin-left: 5px;">
+                                    <button type="submit" class="btn btn-primary">Go further</button>
+                                </form>
+                            </div>
+                        }
+                        else
+                        {
+                            <p>Log in before going further</p>
+                            <form asp-controller="IO" asp-action="Login" method="post">
+                                <button type="submit" class="btn btn-primary">Log in</button>
+                            </form>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

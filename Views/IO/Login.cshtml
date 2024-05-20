@@ -1,0 +1,28 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Login</h2>
+                    <form asp-controller="IO" asp-action="Login" method="post">
+                        <div class="form-group">
+                            <label for="login">Login:</label>
+                            <input type="text" id="login" name="login" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="password" class="form-control" />
+                        </div>
+                        <button type="submit" class="btn btn-primary">Log in</button>
+                    </form>
+                    @if(!string.IsNullOrEmpty(ViewBag.WrongLogin))
+                    {
+                        <div class="alert alert-danger mt-3" role="alert">
+                            @ViewBag.WrongLogin
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

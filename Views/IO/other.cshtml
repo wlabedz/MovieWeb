@@ -1,0 +1,216 @@
+@model HomeViewModel
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            @if (Model.Actors != null && Model.Actors.Any())
+            {
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3>Actors</h3>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Surname</th>
+                                    <th>Films</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var actor in Model.Actors)
+                                {
+                                    <tr>
+                                        <td>@actor.Name</td>
+                                        <td>@actor.Surname</td>
+                                        <td>
+                                            @if (actor.Films != null && actor.Films.Any())
+                                            {
+                                                <ul>
+                                                    @foreach (var film in actor.Films)
+                                                    {
+                                                        <li>@film.Film.Title</li>
+                                                    }
+                                                </ul>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            }
+
+            @if (Model.Films != null && Model.Films.Any())
+            {
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3>Films</h3>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Director</th>
+                                    <th>Genre</th>
+                                    <th>Actors</th>
+                                    <th>Reviews</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var film in Model.Films)
+                                {
+                                    <tr>
+                                        <td>@film.Title</td>
+                                        <td>@film.Director.Name @film.Director.Surname</td>
+                                        <td>@film.Genre.Name</td>
+                                        <td>
+                                            @if (film.Actors != null && film.Actors.Any())
+                                            {
+                                                <ul>
+                                                    @foreach (var actor in film.Actors)
+                                                    {
+                                                        <li>@actor.Actor.Name @actor.Actor.Surname</li>
+                                                    }
+                                                </ul>
+                                            }
+                                            else{
+                                                <li>No actors</li>
+                                            }
+                                        </td>
+                                        @if (film.Reviews != null && film.Reviews.Any())
+                                        {
+                                            <td>
+                                                <ul>
+                                                    @{
+                                                        int sum = 0;
+                                                        foreach (var review in film.Reviews)
+                                                        {
+                                                            sum += review.Rating;
+                                                        }
+                                                        double averageRating = (double)sum / film.Reviews.Count;
+                                                    }
+                                                    <li>Average Rating: @averageRating.ToString("0.00") (Total Reviews: @film.Reviews.Count)</li>
+                                                </ul>
+                                            </td>
+                                        }
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            }
+
+            @if (Model.Directors != null && Model.Directors.Any())
+            {
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3>Directors</h3>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Surname</th>
+                                    <th>Films</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var director in Model.Directors)
+                                {
+                                    <tr>
+                                        <td>@director.Name</td>
+                                        <td>@director.Surname</td>
+                                        <td>
+                                            @if (director.Films != null && director.Films.Any())
+                                            {
+                                                <ul>
+                                                    @foreach (var film in director.Films)
+                                                    {
+                                                        <li>@film.Title</li>
+                                                    }
+                                                </ul>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            }
+
+            @if (Model.Reviews != null && Model.Reviews.Any())
+            {
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3>Reviews</h3>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Text</th>
+                                    <th>Rating</th>
+                                    <th>Film</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var review in Model.Reviews)
+                                {
+                                    <tr>
+                                        <td>@review.username</td>
+                                        <td>@review.Text</td>
+                                        <td>@review.Rating</td>
+                                        <td>@review.Film.Title</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            }
+            @if (Model.Genres != null && Model.Genres.Any())
+            {
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3>Genres</h3>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Films</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var genre in Model.Genres)
+                                {
+                                    <tr>
+                                        <td>@genre.Name</td>
+                                        <td>
+                                            @if (genre.Films != null && genre.Films.Any())
+                                            {
+                                                <ul>
+                                                    @foreach (var film in genre.Films)
+                                                    {
+                                                        <li>@film.Title</li>
+                                                    }
+                                                </ul>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            }
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h3>Add Review</h3>
+                    <form asp-controller="IO" asp-action="AddRev" method="get" style="margin-left: 5px;">
+                        <button type="submit" class="btn btn-primary">Add Review</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
