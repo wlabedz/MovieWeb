@@ -64,17 +64,14 @@
                                         <td>@film.Director.Name @film.Director.Surname</td>
                                         <td>@film.Genre.Name</td>
                                         <td>
-                                            @if (film.Actors != null && film.Actors.Any())
+                                            @foreach (var filmaktor in Model.FilmActors)
                                             {
                                                 <ul>
-                                                    @foreach (var actor in film.Actors)
-                                                    {
-                                                        <li>@actor.Actor.Name @actor.Actor.Surname</li>
-                                                    }
+                                                @if (filmaktor.FilmId == film.Id)
+                                                {
+                                                    <li>@filmaktor.Actor.Name @filmaktor.Actor.Surname</li>
+                                                }
                                                 </ul>
-                                            }
-                                            else{
-                                                <li>No actors</li>
                                             }
                                         </td>
                                         @if (film.Reviews != null && film.Reviews.Any())

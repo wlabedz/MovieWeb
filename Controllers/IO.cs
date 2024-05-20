@@ -91,13 +91,15 @@ public class IO : Controller
             var genres = _context.Genres.ToList();
             var films = _context.Films.ToList();
             var directors = _context.Directors.ToList();
+            var filmactors = _context.FilmActors.ToList();
 
             var data = new HomeViewModel{
                 Actors = actors,
                 Reviews = reviews,
                 Genres = genres,   
                 Films = films,
-                Directors = directors
+                Directors = directors,
+                FilmActors = filmactors
             };
 
             return View(data);

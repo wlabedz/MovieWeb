@@ -65,3 +65,4 @@ C:\Users\Wojtek\Desktop\iisi\2023_2024\pz2\lab10\ProjektLogowanie\bin\Debug\net8
 C:\Users\Wojtek\Desktop\iisi\2023_2024\pz2\lab10\ProjektLogowanie\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
 C:\Users\Wojtek\Desktop\iisi\2023_2024\pz2\lab10\ProjektLogowanie\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
 C:\Users\Wojtek\Desktop\iisi\2023_2024\pz2\lab10\ProjektLogowanie\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+C:\Users\Wojtek\Desktop\iisi\2023_2024\pz2\lab10\ProjektLogowanie\obj\Debug\net8.0\ProjektLogowanie.sourcelink.json

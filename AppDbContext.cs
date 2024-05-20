@@ -101,17 +101,18 @@ public class AppDbContext : DbContext
             Actors.AddRange(actors);
             SaveChanges();
             var films = new List<Film>{
-                new Film { Title = "Pirates of the Caribbean", DirectorId = 1, GenreId = 1, Actors = new List<FilmActor>()
+                new Film { Title = "Pirates of the Caribbean", DirectorId = 1, GenreId = 1
                 },
                 new Film { Title = "Forrest Gump", DirectorId = 2, GenreId = 2 },
             };
             Films.AddRange(films);
             SaveChanges();
             
-            var filmactors = new List<FilmActor>{
-                new FilmActor{ ActorId = 1, FilmId = 1}
+            var filmActors = new List<FilmActor>{
+            new FilmActor { ActorId = 1, FilmId = 1 },
+            new FilmActor { ActorId = 2, FilmId = 1 }
             };
-            FilmActors.AddRange(filmactors);
+            FilmActors.AddRange(filmActors);
             SaveChanges();
 
             var reviews = new List<Review>{
