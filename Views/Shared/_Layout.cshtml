@@ -7,6 +7,49 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ProjektLogowanie.styles.css" asp-append-version="true" />
+    <style>
+        .dropdown-menu-custom {
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: 20px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            list-style: none;
+            z-index: 1000;
+        }
+        .dropdown-menu-custom.show {
+            display: block;
+        }
+        .dropdown-menu-custom a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #333;
+        }
+        .dropdown-menu-custom a:hover {
+            background-color: #f0f0f0;
+        }
+        .navbar-nav {
+            margin-left: auto;
+        }
+        .navbar-toggler-custom {
+            border: none;
+            background: none;
+        }
+        .navbar-toggler-icon-custom {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            vertical-align: middle;
+            content: "";
+            background: no-repeat center center;
+            background-size: 100% 100%;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -34,13 +77,30 @@
                                 <li class="nav-item">
                                     <a class="nav-link" asp-controller="IO" asp-action="adm">For the admin</a>
                                 </li>
+                                <li class="nav-item">
+                                <a class="nav-link" asp-controller="IO" asp-action="other">View all data</a></li>
+                                <li class="nav-item">
+                                <a class="nav-link" asp-controller="IO" asp-action="Welcome">Main site</a></li>
+                            }
+                            else{
+                                <li class="nav-item">
+                                <a class="nav-link" asp-controller="IO" asp-action="Welcome">Main site</a></li>
                             }
                             <li class="nav-item">
-                                <a class="nav-link" asp-controller="IO" asp-action="other">For logged in</a>
-                            </li>
+                                <a class="nav-link" asp-controller="IO" asp-action="LogOut">Logout</a></li>
+                            <!-- Dropdown Icon -->
                             <li class="nav-item">
-                                <a class="nav-link" asp-controller="IO" asp-action="LogOut">Logout</a>
+                                <button class="navbar-toggler-custom" id="dropdownMenuButton">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
                             </li>
+                            <!-- Dropdown Menu -->
+                            <ul class="dropdown-menu-custom" id="dropdownMenu">
+                                <li><a href="/api/IO/Films">Films</a></li>
+                                <li><a href="/api/IO/Actors">Actors</a></li>
+                                <li><a href="/api/IO/Directors">Directors</a></li>
+                                <li><a href="/api/IO/Genres">Genres</a></li>
+                            </ul>
                         }
                         else
                         {
@@ -74,6 +134,23 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var dropdownButton = document.getElementById('dropdownMenuButton');
+            var dropdownMenu = document.getElementById('dropdownMenu');
+
+            dropdownButton.addEventListener('click', function (event) {
+                event.stopPropagation();
+                dropdownMenu.classList.toggle('show');
+            });
+
+            document.addEventListener('click', function (event) {
+                if (!dropdownMenu.contains(event.target) && !dropdownButton.contains(event.target)) {
+                    dropdownMenu.classList.remove('show');
+                }
+            });
+        });
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -1,0 +1,71 @@
+@model HomeViewModel
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="mb-3">
+                <a href="@Url.Action("Menu", "IO")" class="btn btn-primary">Back to Menu</a>
+            </div>
+            @if (Model.Films != null && Model.Films.Any())
+            {
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3>Films</h3>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Director</th>
+                                    <th>Genre</th>
+                                    <th>Actors</th>
+                                    <th>Reviews</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var film in Model.Films)
+                                {
+                                    <tr>
+                                        <td>
+                                            <a href="@Url.Action("FilmDetails", "IO", new { id = film.Id })">
+                                                @film.Title
+                                            </a>
+                                        </td>
+                                        <td>@film.Director.Name @film.Director.Surname</td>
+                                        <td>@film.Genre.Name</td>
+                                        <td>
+                                            @foreach (var filmaktor in Model.FilmActors)
+                                            {
+                                                <ul>
+                                                @if (filmaktor.FilmId == film.Id)
+                                                {
+                                                    <li>@filmaktor.Actor.Name @filmaktor.Actor.Surname</li>
+                                                }
+                                                </ul>
+                                            }
+                                        </td>
+                                        @if (film.Reviews != null && film.Reviews.Any())
+                                        {
+                                            <td>
+                                                <ul>
+                                                    @{
+                                                        int sum = 0;
+                                                        foreach (var review in film.Reviews)
+                                                        {
+                                                            sum += review.Rating;
+                                                        }
+                                                        double averageRating = (double)sum / film.Reviews.Count;
+                                                    }
+                                                    <li>Average Rating: @averageRating.ToString("0.00") (Total Reviews: @film.Reviews.Count)</li>
+                                                </ul>
+                                            </td>
+                                        }
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

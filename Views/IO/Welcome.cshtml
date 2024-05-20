@@ -9,21 +9,50 @@
                         {
                             string k = ViewContext.HttpContext.Session.GetString("User");
                             <p>You are logged in as: @k</p>
-                            <div class="d-flex">
-                                <form asp-controller="IO" asp-action="LogOut" method="get" class="mr-3">
-                                    <button type="submit" class="btn btn-primary">Log out</button>
-                                </form>
-                                <form asp-controller="IO" asp-action="other" method="get" style="margin-left: 5px;">
-                                    <button type="submit" class="btn btn-primary">Go further</button>
-                                </form>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <td class="text-center">
+                                            <form asp-controller="IO" asp-action="Films" method="get">
+                                                <button type="submit" class="btn btn-outline-dark btn-transparent">Films</button>
+                                            </form>
+                                        </td>
+                                        <td class="text-center">
+                                            <form asp-controller="IO" asp-action="Actors" method="get">
+                                                <button type="submit" class="btn btn-outline-dark btn-transparent">Actors</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">
+                                            <form asp-controller="IO" asp-action="Directors" method="get">
+                                                <button type="submit" class="btn btn-outline-dark btn-transparent">Directors</button>
+                                            </form>
+                                        </td>
+                                        <td class="text-center">
+                                            <form asp-controller="IO" asp-action="Genres" method="get">
+                                                <button type="submit" class="btn btn-outline-dark btn-transparent">Genres</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" class="text-center">
+                                            <form asp-controller="IO" asp-action="AddRev" method="get">
+                                                <button type="submit" class="btn btn-outline-dark btn-transparent">Add Review</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </table>
                             </div>
                         }
                         else
                         {
-                            <p>Log in before going further</p>
-                            <form asp-controller="IO" asp-action="Login" method="post">
-                                <button type="submit" class="btn btn-primary">Log in</button>
-                            </form>
+                            <p class="text-center">Log in before going further</p>
+                            <div class="d-flex justify-content-center">
+                                <form asp-controller="IO" asp-action="Login" method="post">
+                                    <button type="submit" class="btn btn-primary">Log in</button>
+                                </form>
+                            </div>
                         }
                     }
                 </div>

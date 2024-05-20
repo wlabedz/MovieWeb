@@ -1,0 +1,28 @@
+@model HomeViewModel
+
+<div class="card mb-4">
+    <div class="card-body">
+        <h3>Assign the Actor to the Film</h3>
+        <form method="post" action="/api/IO/assAct">
+            <div class="form-group">
+                <label for="FilmId">Film:</label>
+                <select class="form-control" id="FilmId" name="FilmId">
+                    @foreach (var film in Model.Films)
+                    {
+                        <option value="@film.Id">@film.Title</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="ActorId">Actor:</label>
+                <select class="form-control" id="ActorId" name="ActorId">
+                    @foreach (var actor in Model.Actors)
+                    {
+                        <option value="@actor.Id">@actor.Name @actor.Surname</option>
+                    }
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Assign</button>
+        </form>
+    </div>
+</div>

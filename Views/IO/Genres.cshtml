@@ -1,0 +1,50 @@
+@model HomeViewModel
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="mb-3">
+                <a href="@Url.Action("Menu", "IO")" class="btn btn-primary">Back to Menu</a>
+            </div>
+            @if (Model.Genres != null && Model.Genres.Any())
+            {
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3>Genres</h3>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Films</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var genre in Model.Genres)
+                                {
+                                    <tr>
+                                        <td>@genre.Name</td>
+                                        <td>
+                                            @if (genre.Films != null && genre.Films.Any())
+                                            {
+                                                <ul>
+                                                    @foreach (var film in genre.Films)
+                                                    {
+                                                        <li>
+                                                            <a href="@Url.Action("FilmDetails", "IO", new { id = film.Id })">
+                                                                @film.Title
+                                                             </a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

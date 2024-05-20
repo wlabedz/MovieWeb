@@ -1,0 +1,35 @@
+@model HomeViewModel
+
+<h2>All Actors</h2>
+
+@if (Model.Actors.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var actor in Model.Actors)
+            {
+                <tr>
+                    <td>@actor.Name</td>
+                    <td>@actor.Surname</td>
+                    <td>
+                        <form asp-controller="IO" asp-action="DeleteAct" method="post" style="display: inline;">
+                        <input type="hidden" name="id" value="@actor.Id" />
+                        <button type="submit" class="btn btn-primary mr-2">DeleteActor</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No actors found.</p>
+}

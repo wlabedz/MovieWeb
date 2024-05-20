@@ -40,6 +40,20 @@
                     </div>
                 </div>
             }
+            <div class="card mb-4">
+            <div class="card-body">
+                <form asp-controller="IO" asp-action="AddActor" method="get" style="display: inline;">
+                    <button type="submit" class="btn btn-primary mr-2">Add Actor</button>
+                </form>
+                <form asp-controller="IO" asp-action="DeleteActor" method="get" style="display: inline;">
+                    <button type="submit" class="btn btn-danger mr-2">Delete Actor</button>
+                </form>
+                <form asp-controller="IO" asp-action="AssignActor" method="get" style="display: inline;">
+                    <button type="submit" class="btn btn-success">Assign Actor to Film</button>
+                </form>
+            </div>
+            </div>
+
 
             @if (Model.Films != null && Model.Films.Any())
             {

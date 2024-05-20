@@ -84,7 +84,7 @@ public class IO : Controller
     [HttpGet("/api/IO/Other")]
     public IActionResult other()
     {
-        if (HttpContext.Session.GetString("Logged") == "Yes")
+        if (HttpContext.Session.GetString("Logged") == "Yes" && HttpContext.Session.GetString("User") == "admin")
         {
             var actors = _context.Actors.ToList();
             var reviews = _context.Reviews.ToList();
@@ -225,13 +225,42 @@ public class IO : Controller
         }
     }
 
+    [HttpGet("api/IO/addactor")]
+    public IActionResult AddActor()
+    {
+        if (HttpContext.Session.GetString("Logged") == "Yes" && HttpContext.Session.GetString("User") == "admin")
+        {
+            var actors = _context.Actors.ToList();
+            var reviews = _context.Reviews.ToList();
+            var genres = _context.Genres.ToList();
+            var films = _context.Films.ToList();
+            var directors = _context.Directors.ToList();
+            var filmactors = _context.FilmActors.ToList();
+
+            var data = new HomeViewModel{
+                Actors = actors,
+                Reviews = reviews,
+                Genres = genres,   
+                Films = films,
+                Directors = directors,
+                FilmActors = filmactors
+            };
+
+            return View(data);
+        }
+        else
+        {
+            return RedirectToAction("Welcome");
+        }
+    }
+
     [HttpPost("/api/IO/review")]
 public IActionResult AddReview(string filmId, string rating, string text)
 {
 
     if (HttpContext.Session.GetString("Logged") != "Yes")
     {
-        return RedirectToAction("other");
+        return RedirectToAction("Welcome");
     }
 
     if (!string.IsNullOrEmpty(text) && !string.IsNullOrEmpty(filmId) && !string.IsNullOrEmpty(rating))
@@ -247,13 +276,62 @@ public IActionResult AddReview(string filmId, string rating, string text)
         _context.Reviews.Add(review);
         _context.SaveChanges();
 
-        return RedirectToAction("other");
+        return RedirectToAction("ReviewAdded");
     }
     else
     {
         return RedirectToAction("AddRev");
     }
 }
+
+    [HttpPost("/api/IO/act")]
+    public IActionResult AddAct(string name, string surname)
+    {
+
+        if (HttpContext.Session.GetString("Logged") != "Yes" || HttpContext.Session.GetString("User") != "admin")
+        {
+            return RedirectToAction("Welcome");
+        }
+
+        if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(surname))
+        {
+            bool exists = _context.Actors.Any(a => a.Name == name && a.Surname == surname);
+
+            if(!exists){
+                var actor = new Actor
+                {
+                    Name = name,
+                    Surname = surname,
+                    Films = new List<FilmActor>()
+                };
+
+                _context.Actors.Add(actor);
+                _context.SaveChanges();
+
+                return RedirectToAction("ActorsSuccess");
+            }
+            else{
+                return RedirectToAction("ActorsFailed");
+            }
+        }
+        else
+        {
+            return RedirectToAction("ActorsFailed");
+        }
+    }
+
+    [HttpGet("api/IO/ActorsSuccess")]
+    public IActionResult ActorsSuccess()
+    {
+        return View();
+    }
+
+    [HttpGet("api/IO/ActorsFailed")]
+    public IActionResult ActorsFailed()
+    {
+        return View();
+    }
+
     [HttpGet("api/IO/RevAdd")]
     public IActionResult ReviewAdded()
     {
@@ -294,6 +372,248 @@ public IActionResult AddReview(string filmId, string rating, string text)
         };
 
         return View(viewModel);
+    }
+
+    [HttpGet("/api/IO/Films")]
+    public IActionResult Films()
+    {
+        if (HttpContext.Session.GetString("Logged") == "Yes")
+        {
+            var actors = _context.Actors.ToList();
+            var reviews = _context.Reviews.ToList();
+            var genres = _context.Genres.ToList();
+            var films = _context.Films.ToList();
+            var directors = _context.Directors.ToList();
+            var filmactors = _context.FilmActors.ToList();
+
+            var data = new HomeViewModel{
+                Actors = actors,
+                Reviews = reviews,
+                Genres = genres,   
+                Films = films,
+                Directors = directors,
+                FilmActors = filmactors
+            };
+            return View(data);
+        }
+        else
+        {
+            return RedirectToAction("Welcome");
+        }
+    }
+
+    [HttpGet("/api/IO/Directors")]
+    public IActionResult Directors()
+    {
+        if (HttpContext.Session.GetString("Logged") == "Yes")
+        {
+            var actors = _context.Actors.ToList();
+            var reviews = _context.Reviews.ToList();
+            var genres = _context.Genres.ToList();
+            var films = _context.Films.ToList();
+            var directors = _context.Directors.ToList();
+            var filmactors = _context.FilmActors.ToList();
+
+            var data = new HomeViewModel{
+                Actors = actors,
+                Reviews = reviews,
+                Genres = genres,   
+                Films = films,
+                Directors = directors,
+                FilmActors = filmactors
+            };
+            return View(data);
+        }
+        else
+        {
+            return RedirectToAction("Welcome");
+        }
+    }
+
+
+    [HttpGet("/api/IO/Actors")]
+    public IActionResult Actors()
+    {
+        if (HttpContext.Session.GetString("Logged") == "Yes")
+        {
+            var actors = _context.Actors.ToList();
+            var reviews = _context.Reviews.ToList();
+            var genres = _context.Genres.ToList();
+            var films = _context.Films.ToList();
+            var directors = _context.Directors.ToList();
+            var filmactors = _context.FilmActors.ToList();
+
+            var data = new HomeViewModel{
+                Actors = actors,
+                Reviews = reviews,
+                Genres = genres,   
+                Films = films,
+                Directors = directors,
+                FilmActors = filmactors
+            };
+            return View(data);
+        }
+        else
+        {
+            return RedirectToAction("Welcome");
+        }
+    }
+
+    [HttpGet("/api/IO/Genres")]
+    public IActionResult Genres()
+    {
+        if (HttpContext.Session.GetString("Logged") == "Yes")
+        {
+            var actors = _context.Actors.ToList();
+            var reviews = _context.Reviews.ToList();
+            var genres = _context.Genres.ToList();
+            var films = _context.Films.ToList();
+            var directors = _context.Directors.ToList();
+            var filmactors = _context.FilmActors.ToList();
+
+            var data = new HomeViewModel{
+                Actors = actors,
+                Reviews = reviews,
+                Genres = genres,   
+                Films = films,
+                Directors = directors,
+                FilmActors = filmactors
+            };
+            return View(data);
+        }
+        else
+        {
+            return RedirectToAction("Welcome");
+        }
+    }
+
+    [HttpGet("api/IO/delactor")]
+    public IActionResult DeleteActor()
+    {
+        if (HttpContext.Session.GetString("Logged") == "Yes" && HttpContext.Session.GetString("User") == "admin")
+        {
+            var actors = _context.Actors.ToList();
+            var reviews = _context.Reviews.ToList();
+            var genres = _context.Genres.ToList();
+            var films = _context.Films.ToList();
+            var directors = _context.Directors.ToList();
+            var filmactors = _context.FilmActors.ToList();
+
+            var data = new HomeViewModel{
+                Actors = actors,
+                Reviews = reviews,
+                Genres = genres,   
+                Films = films,
+                Directors = directors,
+                FilmActors = filmactors
+            };
+
+            return View(data);
+        }
+        else
+        {
+            return RedirectToAction("Welcome");
+        }
+    }
+
+    [HttpPost("/api/IO/delAct")]
+    public IActionResult DeleteAct(int id)
+    {
+
+        if (HttpContext.Session.GetString("Logged") != "Yes" || HttpContext.Session.GetString("User") != "admin")
+        {
+            return RedirectToAction("Welcome");
+        }
+
+        var actor = _context.Actors.FirstOrDefault(a => a.Id == id);
+        if (actor == null){
+            return RedirectToAction("DelFailed");
+        }
+
+        _context.Actors.Remove(actor);
+        _context.SaveChanges();
+        return RedirectToAction("DelSucc");
+    }
+
+    [HttpGet("api/IO/delSuc")]
+    public IActionResult DelSucc()
+    {
+        return View();
+    }
+
+    [HttpGet("api/IO/delFail")]
+    public IActionResult DelFailed()
+    {
+        return View();
+    }
+
+    [HttpGet("api/IO/assActor")]
+    public IActionResult AssignActor()
+    {
+        if (HttpContext.Session.GetString("Logged") == "Yes" && HttpContext.Session.GetString("User") == "admin")
+        {
+            var actors = _context.Actors.ToList();
+            var reviews = _context.Reviews.ToList();
+            var genres = _context.Genres.ToList();
+            var films = _context.Films.ToList();
+            var directors = _context.Directors.ToList();
+            var filmactors = _context.FilmActors.ToList();
+
+            var data = new HomeViewModel{
+                Actors = actors,
+                Reviews = reviews,
+                Genres = genres,   
+                Films = films,
+                Directors = directors,
+                FilmActors = filmactors
+            };
+
+            return View(data);
+        }
+        else
+        {
+            return RedirectToAction("Welcome");
+        }
+    }
+
+    [HttpPost("/api/IO/assAct")]
+    public IActionResult AssAct(int FilmId, int ActorId)
+    {
+
+        if (HttpContext.Session.GetString("Logged") != "Yes" || HttpContext.Session.GetString("User") != "admin")
+        {
+            return RedirectToAction("Welcome");
+        }
+        
+        bool exists = _context.FilmActors.Any(a => a.FilmId == FilmId && a.ActorId == ActorId);
+
+        if(!exists){
+                var filmact = new FilmActor
+                {
+                    FilmId = FilmId,
+                    ActorId = ActorId
+                };
+
+                _context.FilmActors.Add(filmact);
+                _context.SaveChanges();
+
+                return RedirectToAction("AssignSucc");
+        }
+
+        return RedirectToAction("AssignFailed");
+    }
+
+
+    [HttpGet("api/IO/AssignSucc")]
+    public IActionResult AssignSucc()
+    {
+        return View();
+    }
+
+    [HttpGet("api/IO/AssignFailed")]
+    public IActionResult AssignFailed()
+    {
+        return View();
     }
 
 }

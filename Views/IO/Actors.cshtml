@@ -1,0 +1,48 @@
+@model HomeViewModel
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="mb-3">
+                <a href="@Url.Action("Menu", "IO")" class="btn btn-primary">Back to Menu</a>
+            </div>
+            @if (Model.Actors != null && Model.Actors.Any())
+            {
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3>Actors</h3>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Surname</th>
+                                    <th>Films</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var actor in Model.Actors)
+                                {
+                                    <tr>
+                                        <td>@actor.Name</td>
+                                        <td>@actor.Surname</td>
+                                        <td>
+                                            @if (actor.Films != null && actor.Films.Any())
+                                            {
+                                                <ul>
+                                                    @foreach (var film in actor.Films)
+                                                    {
+                                                        <li>@film.Film.Title</li>
+                                                    }
+                                                </ul>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
