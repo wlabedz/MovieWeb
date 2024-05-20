@@ -43,8 +43,6 @@ app.Use(async (ctx, next) =>
 
     if ((ctx.Response.StatusCode == 404 || ctx.Response.StatusCode == 405) && !ctx.Response.HasStarted)
     {
-        Console.WriteLine("BLAD");
-
         ctx.Response.Redirect("/api/IO");
         return;
     }

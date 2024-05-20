@@ -31,7 +31,11 @@
                                                 <ul>
                                                     @foreach (var film in actor.Films)
                                                     {
-                                                        <li>@film.Film.Title</li>
+                                                        <li>
+                                                            <a href="@Url.Action("FilmDetails", "IO", new { id = film.FilmId })">
+                                                                @film.Film.Title
+                                                             </a>
+                                                        </li>
                                                     }
                                                 </ul>
                                             }

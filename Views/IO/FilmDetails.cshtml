@@ -5,25 +5,33 @@
         <h2>@Model.Films[0].Title</h2>
         <p><strong>Director:</strong> @Model.Films[0].Director.Name @Model.Films[0].Director.Surname </p>
         <p><strong>Genre:</strong> @Model.Films[0].Genre.Name</p>
+    </div>
+</div>
 
+<div class="card mb-4">
+    <div class="card-body">
         <h3>Actors</h3>
         @if (Model.FilmActors != null && Model.FilmActors.Any())
         {
             @foreach (var filmaktor in Model.FilmActors)
             {
-            <ul>
-                @if (filmaktor.FilmId== Model.Films[0].Id)
-                {
-                    <li>@filmaktor.Actor.Name @filmaktor.Actor.Surname</li>
-                }
-            </ul>
+                <ul>
+                    @if (filmaktor.FilmId== Model.Films[0].Id)
+                    {
+                        <li>@filmaktor.Actor.Name @filmaktor.Actor.Surname</li>
+                    }
+                </ul>
             }
         }
         else
         {
             <p>No actors listed.</p>
         }
+    </div>
+</div>
 
+<div class="card mb-4">
+    <div class="card-body">
         <h3>Reviews</h3>
         @if (Model.Reviews != null && Model.Reviews.Any())
         {
@@ -49,7 +57,11 @@
         {
             <p>No reviews yet.</p>
         }
+    </div>
+</div>
 
+<div class="card mb-4">
+    <div class="card-body">
         <h3>Add Review</h3>
         <form method="post" action="/api/IO/review">
             <input type="hidden" name="FilmId" value="@Model.Films[0].Id" />
