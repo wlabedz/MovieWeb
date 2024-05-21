@@ -4,68 +4,111 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="mb-3">
-                <a href="@Url.Action("Menu", "IO")" class="btn btn-primary">Back to Menu</a>
+                <a href="@Url.Action("Menu", "IO")" class="btn btn-primary mb-3">Back to Menu</a>
             </div>
-            @if (Model.Films != null && Model.Films.Any())
-            {
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <h3>Films</h3>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Director</th>
-                                    <th>Genre</th>
-                                    <th>Actors</th>
-                                    <th>Reviews</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var film in Model.Films)
+
+            <form asp-action="Films" method="get" class="d-flex flex-column align-items-center mb-5">
+                <div class="form-row mb-3">
+                    <div class="form-group col-md-4">
+                        <input type="text" class="form-control" placeholder="Search by title" name="searchString" value="@Model.SearchString">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <select class="form-control" name="selectedGenre">
+                            <option value="">All Genres</option>
+                            @foreach (var genre in Model.Genres)
+                            {
+                                if (genre.Name == Model.SelectedGenre)
                                 {
-                                    <tr>
-                                        <td>
-                                            <a href="@Url.Action("FilmDetails", "IO", new { id = film.Id })">
-                                                @film.Title
-                                            </a>
-                                        </td>
-                                        <td>@film.Director.Name @film.Director.Surname</td>
-                                        <td>@film.Genre.Name</td>
-                                        <td>
-                                            @foreach (var filmaktor in Model.FilmActors)
-                                            {
-                                                <ul>
-                                                @if (filmaktor.FilmId == film.Id)
-                                                {
-                                                    <li>@filmaktor.Actor.Name @filmaktor.Actor.Surname</li>
-                                                }
-                                                </ul>
-                                            }
-                                        </td>
-                                        @if (film.Reviews != null && film.Reviews.Any())
-                                        {
-                                            <td>
-                                                <ul>
-                                                    @{
-                                                        int sum = 0;
-                                                        foreach (var review in film.Reviews)
-                                                        {
-                                                            sum += review.Rating;
-                                                        }
-                                                        double averageRating = (double)sum / film.Reviews.Count;
-                                                    }
-                                                    <li>Average Rating: @averageRating.ToString("0.00") (Total Reviews: @film.Reviews.Count)</li>
-                                                </ul>
-                                            </td>
-                                        }
-                                    </tr>
+                                    <option value="@genre.Name" selected="selected">@genre.Name</option>
                                 }
-                            </tbody>
-                        </table>
+                                else
+                                {
+                                    <option value="@genre.Name">@genre.Name</option>
+                                }
+                            }
+                        </select>
                     </div>
                 </div>
-            }
+                <div class="form-row mb-3">
+                    <div class="form-group col-md-4 d-flex justify-content-center">
+                        <button type="submit" class="btn btn-outline-dark mx-3">Filter</button>
+                        <a href="@Url.Action("Films", "IO")" class="btn btn-outline-dark mx-3">Reset</a>
+                    </div>
+                </div>
+            </form>
+
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h3>Films</h3>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <a asp-action="Films" asp-route-sortOrder='@(Model.SortOrder == "title_desc" ? "title" : "title_desc")' class="d-flex align-items-center">
+                                        Title
+                                        <i class="fas @(Model.SortOrder == "title_desc" ? "fa-sort-down" : "fa-sort-up") ml-1"></i>
+                                    </a>
+                                </th>
+                                <th>
+                                    <a asp-action="Films" asp-route-sortOrder='@(Model.SortOrder == "director_desc" ? "director" : "director_desc")' class="d-flex align-items-center">
+                                        Director
+                                        <i class="fas @(Model.SortOrder == "director_desc" ? "fa-sort-down" : "fa-sort-up") ml-1"></i>
+                                    </a>
+                                </th>
+                                <th>Genre</th>
+                                <th>Actors</th>
+                                <th>
+                                    <a asp-action="Films" asp-route-sortOrder='@(Model.SortOrder == "review_desc" ? "review" : "review_desc")' class="d-flex align-items-center">
+                                        Reviews
+                                        <i class="fas @(Model.SortOrder == "review_desc" ? "fa-sort-down" : "fa-sort-up") ml-1"></i>
+                                    </a>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var film in Model.Films)
+                            {
+                                <tr>
+                                    <td>
+                                        <a href="@Url.Action("FilmDetails", "IO", new { id = film.Id })">
+                                            @film.Title
+                                        </a>
+                                    </td>
+                                    <td>@film.Director.Name @film.Director.Surname</td>
+                                    <td>@film.Genre.Name</td>
+                                    <td>
+                                        @foreach (var filmaktor in Model.FilmActors)
+                                        {
+                                            @if (filmaktor.FilmId == film.Id)
+                                            {
+                                                <ul>
+                                                    <li>@filmaktor.Actor.Name @filmaktor.Actor.Surname</li>
+                                                </ul>
+                                            }
+                                        }
+                                    </td>
+                                    @if (film.Reviews != null && film.Reviews.Any())
+                                    {
+                                        <td>
+                                            <ul>
+                                                @{
+                                                    int sum = 0;
+                                                    foreach (var review in film.Reviews)
+                                                    {
+                                                        sum += review.Rating;
+                                                    }
+                                                    double averageRating = (double)sum / film.Reviews.Count;
+                                                }
+                                                <li>Average Rating: @averageRating.ToString("0.00") (Total Reviews: @film.Reviews.Count)</li>
+                                            </ul>
+                                        </td>
+                                    }
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>

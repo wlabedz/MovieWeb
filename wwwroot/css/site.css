@@ -20,3 +20,31 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+form.d-flex.flex-column.align-items-center .form-row {
+  width: 100%;
+  justify-content: center;
+}
+
+.form-group {
+  margin: 15px 0;
+}
+
+.btn-outline-dark {
+  background-color: white;
+  border-color: black;
+  color: black;
+}
+
+.btn-outline-dark:hover {
+  background-color: black;
+  color: white;
+}
+
+.mx-3 {
+  margin: 0 1.5rem;/
+}
+
+.ml-1 {
+  margin-left: 0.25rem;
+}

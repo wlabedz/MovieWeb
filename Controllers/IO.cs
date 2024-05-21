@@ -375,88 +375,75 @@ public IActionResult AddReview(string filmId, string rating, string text)
     }
 
     [HttpGet("/api/IO/Films")]
-    public IActionResult Films()
+public IActionResult Films(string sortOrder, string searchString, string selectedGenre)
+{
+    if (HttpContext.Session.GetString("Logged") == "Yes")
     {
-        if (HttpContext.Session.GetString("Logged") == "Yes")
-        {
-            var actors = _context.Actors.ToList();
-            var reviews = _context.Reviews.ToList();
-            var genres = _context.Genres.ToList();
-            var films = _context.Films.ToList();
-            var directors = _context.Directors.ToList();
-            var filmactors = _context.FilmActors.ToList();
+        var films = from f in _context.Films
+                    select f;
 
-            var data = new HomeViewModel{
-                Actors = actors,
-                Reviews = reviews,
-                Genres = genres,   
-                Films = films,
-                Directors = directors,
-                FilmActors = filmactors
-            };
-            return View(data);
-        }
-        else
+        if (!String.IsNullOrEmpty(searchString))
         {
-            return RedirectToAction("Welcome");
+            films = films.Where(f => f.Title.Contains(searchString));
         }
+
+        if (!String.IsNullOrEmpty(selectedGenre))
+        {
+            films = films.Where(f => f.Genre.Name == selectedGenre);
+        }
+        
+        var filmWithReviews = films.Select(f => new
+        {
+            Film = f,
+            AverageRating = f.Reviews.Any() ? f.Reviews.Average(r => r.Rating) : 0
+        });
+
+        switch (sortOrder)
+        {
+            case "title":
+                filmWithReviews = filmWithReviews.OrderBy(f => f.Film.Title);
+                break;
+            case "title_desc":
+                filmWithReviews = filmWithReviews.OrderByDescending(f => f.Film.Title);
+                break;
+            case "director":
+                filmWithReviews = filmWithReviews.OrderBy(f => f.Film.Director.Name);
+                break;
+            case "director_desc":
+                filmWithReviews = filmWithReviews.OrderByDescending(f => f.Film.Director.Name);
+                break;
+            case "review":
+                filmWithReviews = filmWithReviews.OrderBy(f => f.AverageRating);
+                break;
+            case "review_desc":
+                filmWithReviews = filmWithReviews.OrderByDescending(f => f.AverageRating);
+                break;
+            default:
+                filmWithReviews = filmWithReviews.OrderBy(f => f.Film.Title);
+                break;
+        }
+
+        var orderedFilms = filmWithReviews.Select(f => f.Film).ToList();
+
+        var data = new HomeViewModel
+        {
+            Films = orderedFilms,
+            Directors = _context.Directors.ToList(),
+            Reviews = _context.Reviews.ToList(),
+            Actors = _context.Actors.ToList(),
+            Genres = _context.Genres.ToList(),
+            FilmActors = _context.FilmActors.ToList(),
+            SearchString = searchString,
+            SelectedGenre = selectedGenre,
+            SortOrder = sortOrder
+        };
+
+        return View(data);
     }
-
-    [HttpGet("/api/IO/Directors")]
-    public IActionResult Directors()
+    else
     {
-        if (HttpContext.Session.GetString("Logged") == "Yes")
-        {
-            var actors = _context.Actors.ToList();
-            var reviews = _context.Reviews.ToList();
-            var genres = _context.Genres.ToList();
-            var films = _context.Films.ToList();
-            var directors = _context.Directors.ToList();
-            var filmactors = _context.FilmActors.ToList();
-
-            var data = new HomeViewModel{
-                Actors = actors,
-                Reviews = reviews,
-                Genres = genres,   
-                Films = films,
-                Directors = directors,
-                FilmActors = filmactors
-            };
-            return View(data);
-        }
-        else
-        {
-            return RedirectToAction("Welcome");
-        }
+        return RedirectToAction("Welcome");
     }
-
-
-    [HttpGet("/api/IO/Actors")]
-    public IActionResult Actors()
-    {
-        if (HttpContext.Session.GetString("Logged") == "Yes")
-        {
-            var actors = _context.Actors.ToList();
-            var reviews = _context.Reviews.ToList();
-            var genres = _context.Genres.ToList();
-            var films = _context.Films.ToList();
-            var directors = _context.Directors.ToList();
-            var filmactors = _context.FilmActors.ToList();
-
-            var data = new HomeViewModel{
-                Actors = actors,
-                Reviews = reviews,
-                Genres = genres,   
-                Films = films,
-                Directors = directors,
-                FilmActors = filmactors
-            };
-            return View(data);
-        }
-        else
-        {
-            return RedirectToAction("Welcome");
-        }
     }
 
     [HttpGet("/api/IO/Genres")]
@@ -477,6 +464,86 @@ public IActionResult AddReview(string filmId, string rating, string text)
                 Genres = genres,   
                 Films = films,
                 Directors = directors,
+                FilmActors = filmactors
+            };
+            return View(data);
+        }
+        else
+        {
+            return RedirectToAction("Welcome");
+        }
+    }
+
+    [HttpGet("/api/IO/Actors")]
+    public IActionResult Actors(string searchString)
+    {
+        if (HttpContext.Session.GetString("Logged") == "Yes")
+        {
+
+            var actors = _context.Actors.AsQueryable();
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                string[] names = searchString.Split(' ');
+
+                actors = actors.Where(f => f.Name.Contains(names[0]) || f.Surname.Contains(names[0]));
+
+                if (names.Length > 1){
+                    actors = actors.Where(f => f.Name.Contains(names[names.Length-1]) || f.Surname.Contains(names[names.Length-1]));
+                }
+            }
+            var directors = _context.Directors.ToList();
+            var reviews = _context.Reviews.ToList();
+            var genres = _context.Genres.ToList();
+            var films = _context.Films.ToList();
+            var filmactors = _context.FilmActors.ToList();
+
+            var data = new HomeViewModel{
+                Actors = actors.ToList(),
+                Reviews = reviews,
+                Genres = genres,   
+                Films = films,
+                Directors = directors,
+                FilmActors = filmactors
+            };
+            return View(data);
+        }
+        else
+        {
+            return RedirectToAction("Welcome");
+        }
+    }
+
+    [HttpGet("/api/IO/Directors")]
+    public IActionResult Directors(string searchString)
+    {
+        if (HttpContext.Session.GetString("Logged") == "Yes")
+        {
+
+            var directors = _context.Directors.AsQueryable();
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                string[] names = searchString.Split(' ');
+
+                directors = directors.Where(f => f.Name.Contains(names[0]) || f.Surname.Contains(names[0]));
+
+                if (names.Length > 1){
+                    directors = directors.Where(f => f.Name.Contains(names[names.Length-1]) || f.Surname.Contains(names[names.Length-1]));
+                }
+            }
+            var actors = _context.Actors.ToList();
+            var reviews = _context.Reviews.ToList();
+            var genres = _context.Genres.ToList();
+            var films = _context.Films.ToList();
+            var filmactors = _context.FilmActors.ToList();
+
+            var data = new HomeViewModel{
+                Actors = actors,
+                Reviews = reviews,
+                Genres = genres,   
+                Films = films,
+                Directors = directors.ToList(),
                 FilmActors = filmactors
             };
             return View(data);

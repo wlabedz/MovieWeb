@@ -6,6 +6,19 @@
             <div class="mb-3">
                 <a href="@Url.Action("Menu", "IO")" class="btn btn-primary">Back to Menu</a>
             </div>
+            <form asp-action="Directors" method="get" class="d-flex flex-column align-items-center mb-5">
+                <div class="form-row mb-3">
+                    <div class="form-group col-md-4">
+                        <input type="text" class="form-control" placeholder="Search by name or surname" name="searchString" value="@Model.SearchString">
+                    </div>
+                </div>
+                <div class="form-row mb-3">
+                    <div class="form-group col-md-4 d-flex justify-content-center">
+                        <button type="submit" class="btn btn-outline-dark mx-3">Filter</button>
+                        <a href="@Url.Action("Films", "IO")" class="btn btn-outline-dark mx-3">Reset</a>
+                    </div>
+                </div>
+            </form>
             @if (Model.Directors != null && Model.Directors.Any())
             {
                 <div class="card mb-4">
