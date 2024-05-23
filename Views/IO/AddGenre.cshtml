@@ -4,6 +4,7 @@
     <div class="card-body">
         <h3>Add Genre</h3>
         <form method="post" action="/api/IO/addgen">
+        @Html.AntiForgeryToken()
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="name" id="nam" name="name" class="form-control" />

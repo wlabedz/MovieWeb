@@ -18,6 +18,7 @@
                     <td>@actor.Surname</td>
                     <td>
                         <form asp-controller="IO" asp-action="DeleteAct" method="post" style="display: inline;">
+                        @Html.AntiForgeryToken()
                         <input type="hidden" name="id" value="@actor.Id" />
                         <button type="submit" class="btn btn-primary mr-2">DeleteActor</button>
                         </form>

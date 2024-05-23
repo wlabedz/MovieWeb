@@ -170,6 +170,7 @@ public class IO : Controller
     }
 
     [HttpPost("/api/IO/AddUser")]
+     [ValidateAntiForgeryToken]
     public IActionResult AddUser(string username, string password)
     {
         string ComputeHash(string input)
@@ -255,13 +256,9 @@ public class IO : Controller
     }
 
     [HttpPost("/api/IO/review")]
+    [ValidateAntiForgeryToken]
 public IActionResult AddReview(string filmId, string rating, string text)
 {
-
-    if (HttpContext.Session.GetString("Logged") != "Yes")
-    {
-        return RedirectToAction("Welcome");
-    }
 
     if (!string.IsNullOrEmpty(text) && !string.IsNullOrEmpty(filmId) && !string.IsNullOrEmpty(rating))
     {
@@ -285,13 +282,9 @@ public IActionResult AddReview(string filmId, string rating, string text)
 }
 
     [HttpPost("/api/IO/act")]
+     [ValidateAntiForgeryToken]
     public IActionResult AddAct(string name, string surname)
     {
-
-        if (HttpContext.Session.GetString("Logged") != "Yes" || HttpContext.Session.GetString("User") != "admin")
-        {
-            return RedirectToAction("Welcome");
-        }
 
         if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(surname))
         {
@@ -584,13 +577,9 @@ public IActionResult Films(string sortOrder, string searchString, string selecte
     }
 
     [HttpPost("/api/IO/delAct")]
+     [ValidateAntiForgeryToken]
     public IActionResult DeleteAct(int id)
     {
-
-        if (HttpContext.Session.GetString("Logged") != "Yes" || HttpContext.Session.GetString("User") != "admin")
-        {
-            return RedirectToAction("Welcome");
-        }
 
         var actor = _context.Actors.FirstOrDefault(a => a.Id == id);
         if (actor == null){
@@ -644,14 +633,10 @@ public IActionResult Films(string sortOrder, string searchString, string selecte
     }
 
     [HttpPost("/api/IO/assAct")]
+     [ValidateAntiForgeryToken]
     public IActionResult AssAct(int FilmId, int ActorId)
     {
 
-        if (HttpContext.Session.GetString("Logged") != "Yes" || HttpContext.Session.GetString("User") != "admin")
-        {
-            return RedirectToAction("Welcome");
-        }
-        
         bool exists = _context.FilmActors.Any(a => a.FilmId == FilmId && a.ActorId == ActorId);
 
         if(!exists){
@@ -713,13 +698,9 @@ public IActionResult Films(string sortOrder, string searchString, string selecte
     }
 
     [HttpPost("/api/IO/fi")]
+     [ValidateAntiForgeryToken]
     public IActionResult AddFi(string title, int dirId, int genId)
     {
-
-        if (HttpContext.Session.GetString("Logged") != "Yes" || HttpContext.Session.GetString("User") != "admin")
-        {
-            return RedirectToAction("Welcome");
-        }
 
         if (!string.IsNullOrEmpty(title) && !string.IsNullOrEmpty(dirId.ToString()) && !string.IsNullOrEmpty(genId.ToString()))
         {
@@ -790,13 +771,9 @@ public IActionResult Films(string sortOrder, string searchString, string selecte
     }
 
     [HttpPost("/api/IO/delfi")]
+     [ValidateAntiForgeryToken]
     public IActionResult DeleteFi(int id)
     {
-
-        if (HttpContext.Session.GetString("Logged") != "Yes" || HttpContext.Session.GetString("User") != "admin")
-        {
-            return RedirectToAction("Welcome");
-        }
 
         var film = _context.Films.FirstOrDefault(a => a.Id == id);
         if (film == null){
@@ -851,13 +828,9 @@ public IActionResult Films(string sortOrder, string searchString, string selecte
     }
 
     [HttpPost("/api/IO/deldi")]
+     [ValidateAntiForgeryToken]
     public IActionResult DeleteDi(int id)
     {
-
-        if (HttpContext.Session.GetString("Logged") != "Yes" || HttpContext.Session.GetString("User") != "admin")
-        {
-            return RedirectToAction("Welcome");
-        }
 
         var director = _context.Directors.FirstOrDefault(a => a.Id == id);
         if (director == null){
@@ -912,6 +885,7 @@ public IActionResult Films(string sortOrder, string searchString, string selecte
     }
 
     [HttpPost("/api/IO/adddi")]
+     [ValidateAntiForgeryToken]
     public IActionResult AddDi(string name, string surname)
     {
 
@@ -984,13 +958,9 @@ public IActionResult Films(string sortOrder, string searchString, string selecte
     }
 
     [HttpPost("/api/IO/delre")]
+     [ValidateAntiForgeryToken]
     public IActionResult DelRe(int id)
     {
-
-        if (HttpContext.Session.GetString("Logged") != "Yes" || HttpContext.Session.GetString("User") != "admin")
-        {
-            return RedirectToAction("Welcome");
-        }
 
         var review = _context.Reviews.FirstOrDefault(a => a.Id == id);
         if (review == null){
@@ -1032,6 +1002,7 @@ public IActionResult Films(string sortOrder, string searchString, string selecte
     }
 
     [HttpPost("/api/IO/addgen")]
+    [ValidateAntiForgeryToken]
     public IActionResult AddGe(string name)
     {
 
@@ -1089,13 +1060,9 @@ public IActionResult Films(string sortOrder, string searchString, string selecte
     }
 
     [HttpPost("/api/IO/delg")]
+    [ValidateAntiForgeryToken]
     public IActionResult DelGen(int id)
     {
-
-        if (HttpContext.Session.GetString("Logged") != "Yes" || HttpContext.Session.GetString("User") != "admin")
-        {
-            return RedirectToAction("Welcome");
-        }
 
         var genre = _context.Genres.FirstOrDefault(a => a.Id == id);
         if (genre == null){

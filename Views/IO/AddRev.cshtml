@@ -4,6 +4,7 @@
     <div class="card-body">
         <h3>Add Review</h3>
         <form method="post" action="/api/IO/review">
+         @Html.AntiForgeryToken()
             <div class="form-group">
                 <label for="filmId">Film:</label>
                 <select class="form-control" id="filmId" name="filmId">

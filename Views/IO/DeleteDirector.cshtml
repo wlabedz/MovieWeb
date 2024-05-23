@@ -18,6 +18,7 @@
                     <td>@director.Surname</td>
                     <td>
                         <form asp-controller="IO" asp-action="DeleteDi" method="post" style="display: inline;">
+                        @Html.AntiForgeryToken()
                         <input type="hidden" name="id" value="@director.Id" />
                         <button type="submit" class="btn btn-primary mr-2">Delete Director</button>
                         </form>

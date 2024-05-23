@@ -4,6 +4,7 @@
     <div class="card-body">
         <h3>Assign the Actor to the Film</h3>
         <form method="post" action="/api/IO/assAct">
+        @Html.AntiForgeryToken()
             <div class="form-group">
                 <label for="FilmId">Film:</label>
                 <select class="form-control" id="FilmId" name="FilmId">

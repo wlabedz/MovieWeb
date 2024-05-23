@@ -4,6 +4,7 @@
     <div class="card-body">
         <h3>Add Director</h3>
         <form method="post" action="/api/IO/adddi">
+        @Html.AntiForgeryToken()
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="name" id="name" name="name" class="form-control" />

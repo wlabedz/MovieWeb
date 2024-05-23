@@ -64,6 +64,7 @@
     <div class="card-body">
         <h3>Add Review</h3>
         <form method="post" action="/api/IO/review">
+        @Html.AntiForgeryToken()
             <input type="hidden" name="FilmId" value="@Model.Films[0].Id" />
             <div class="form-group">
                 <label for="rating">Rating:</label>

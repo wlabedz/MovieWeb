@@ -4,6 +4,7 @@
     <div class="card-body">
         <h3>Add Actor</h3>
         <form method="post" action="/api/IO/act">
+        @Html.AntiForgeryToken()
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="name" id="name" name="name" class="form-control" />
